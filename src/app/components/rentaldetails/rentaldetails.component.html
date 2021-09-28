@@ -1,0 +1,22 @@
+
+<div *ngIf="dataLoaded == false" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<br>
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">Kiralamalar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rentaldetail of rentaldetails">
+            <td>{{rentaldetail.brandName}}</td>
+            <td>{{rentaldetail.colorName}}</td>
+            <td>{{rentaldetail.rentDate |date:'shortDate'}}</td>
+            <td>{{rentaldetail.deliveryDate |date:'shortDate'}}</td>
+            <td>{{rentaldetail.firstName}} {{rentaldetail.lastName}}</td>
+        </tr>
+      </tbody>
+</table>

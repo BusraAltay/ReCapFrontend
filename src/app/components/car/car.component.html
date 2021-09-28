@@ -1,0 +1,42 @@
+
+<div *ngIf="dataLoaded == false" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<br>
+<!-- <div>
+    <div>
+        <label for="birthday">Alış Tarihi:</label>
+        <input type="date" id="rentDate">
+    </div>
+    <div>
+        <label for="birthday">Teslim Tarihi:</label>
+        <input type="date" id="deliveryDate" >
+    </div>
+</div> -->
+
+<div class="mb-3">
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
+        placeholder="Ara">
+</div>
+<div *ngIf="filterText" class="alert alert-primary">
+    {{filterText}} aradınız
+</div>
+<app-filtercar></app-filtercar>
+
+<div class="row mt-3">
+    <div *ngFor="let cardetail of cardetails | filter:filterText" class="card" style="width: 16rem;
+     margin-right: 2ex; margin-bottom: 2ex;">
+        <img *ngIf="cardetail.carImages.length==0" 
+        [src]="getImagePath(defaultImagePath)" class="card-img-top" alt="..."
+        style="margin-top: 1ex; height: 20ex;">
+        <img *ngIf="cardetail.carImages.length!=0"
+        [src]="getImagePath(cardetail.carImages[0].imagePath)" class="card-img-top" 
+        alt="..." style="margin-top: 1ex; height: 20ex;">
+        <div class="card-body">
+          <h5 class="card-title">{{cardetail.brandName}}</h5>
+          <h6 class="card-title">{{cardetail.colorName}}</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a routerLink="/cardetails/car/{{cardetail.carId}}" class="btn btn-primary">Detay</a>
+        </div>
+    </div>
+</div>

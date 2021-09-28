@@ -1,0 +1,75 @@
+
+<div class="row mt-4">
+  <div class="col-md-4 form-group">
+      <label for="rent-date-input" class="from-label">Alış Tarihi</label>
+      <input [ngModel]="rentDate | date: 'yyyy-MM-dd'" 
+          (ngModelChange)="rentDate = $event"
+          name="rentDate" class="form-control" 
+          type="date" id="rent-date-input" required />
+  </div>
+  <div class="col-md-4 form-group">
+      <label for="delivery-date-input" class="from-label">Teslim Tarihi</label>
+      <input [ngModel]="deliveryDate | date: 'yyyy-MM-dd'" 
+          (ngModelChange)="deliveryDate = $event"
+          name="deliveryDate" class="form-control" 
+          type="date" id="delivery-date-input" required />
+  </div>
+</div>
+<br>
+<div class="row col-md-6">
+  <div *ngFor="let cardetail of cardetails" class="card"
+      style="width: 16rem;">
+  <img *ngIf="cardetail.carImages.length==0" 
+        [src]="getImagePath(defaultImagePath)" class="card-img-top" alt="..."
+        >
+  <img *ngIf="cardetail.carImages.length!=0"
+        [src]="getImagePath(cardetail.carImages[0].imagePath)" class="card-img-top" 
+        alt="..." style="margin-top: 1ex; height: 20ex;">
+  <div class="card-body">
+    <h5 class="card-title">{{cardetail.brandName}}</h5>
+    <h6 class="card-title">Renk: {{cardetail.colorName}}</h6>
+    <h6 class="card-title">Model: {{cardetail.modelYear}}</h6>
+    <h6 class="card-title">Günlük Fiyat: {{cardetail.dailyPrice}} ₺</h6>
+    <p class="card-text">Açıklama: {{cardetail.description}}</p>
+    <a (click)="addToRent(cardetail)" routerLink="/rentaldetails" 
+    class="btn btn-primary">Kirala</a>
+  </div>
+</div>
+
+
+  <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img *ngIf="cardetail.carImages.length==0" 
+          [src]="getImagePath(defaultImagePath)" class="d-block w-100" alt="..."
+          style="margin-top: 1ex; height: 20ex;">
+        <img *ngIf="cardetail.carImages.length==1"
+          [src]="getImagePath(cardetail.carImages[0].imagePath)" class="d-block w-100" 
+          alt="..." style="margin-top: 1ex; height: 20ex;">
+      </div>
+      <div class="carousel-item">
+        <img *ngIf="cardetail.carImages.length<5" 
+          [src]="getImagePath(defaultImagePath)" class="d-block w-100" alt="..."
+          style="margin-top: 1ex; height: 20ex;">
+        <img *ngIf="cardetail.carImages.length==2"
+          [src]="getImagePath(cardetail.carImages[1].imagePath)" class="d-block w-100" 
+          alt="..." style="margin-top: 1ex; height: 20ex;">
+      </div>
+      <div class="carousel-item">
+        <img *ngIf="cardetail.carImages.length<5" 
+          [src]="getImagePath(defaultImagePath)" class="d-block w-100" alt="..."
+          style="margin-top: 1ex; height: 20ex;">
+        <img *ngIf="cardetail.carImages.length==3"
+          [src]="getImagePath(cardetail.carImages[2].imagePath)" class="d-block w-100" 
+          alt="..." style="margin-top: 1ex; height: 20ex;">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> -->
