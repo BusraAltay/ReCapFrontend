@@ -34,7 +34,7 @@ export class CardetailsComponent implements OnInit {
       this.getCurrentCarDetails(params["carId"]);
     })
   }
-
+  
   getCurrentCarDetails(carId:number){
     this.cardetailService.getCurrentCarDetails(carId).subscribe(response=>{
       this.cardetails = response.data;
