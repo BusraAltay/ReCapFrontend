@@ -3,6 +3,7 @@ import { ListResponseModel } from './../models/listResponseModel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,14 @@ export class CardetailService {
     + "&colorid=" + colorId;
     console.log(newPath);
     return this.httpClient.get<ListResponseModel<CarDetails>>(newPath);
+  }
+
+  getCheckRentAvailable(carId:number, rentDate:Date, deliveryDate:Date)
+    :Observable<SingleResponseModel<boolean>>{
+    let newPath = this.apiUrl + "rentals/checkrental?carId=" + carId 
+    + "&rentDate=" + rentDate 
+    + "&deliveryDate=" + deliveryDate;
+    console.log(newPath);
+    return this.httpClient.get<SingleResponseModel<boolean>>(newPath);
   }
 }

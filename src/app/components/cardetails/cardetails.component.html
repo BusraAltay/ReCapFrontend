@@ -26,12 +26,16 @@
         [src]="getImagePath(cardetail.carImages[0].imagePath)" class="card-img-top" 
         alt="..." style="margin-top: 1ex; height: 20ex;">
   <div class="card-body">
-    <h5 class="card-title">{{cardetail.brandName}}</h5>
-    <h6 class="card-title">Renk: {{cardetail.colorName}}</h6>
-    <h6 class="card-title">Model: {{cardetail.modelYear}}</h6>
-    <h6 class="card-title">Günlük Fiyat: {{cardetail.dailyPrice}} ₺</h6>
+    <ul>
+      <li type="text" class="card-title"  value="{{cardetail.carId}}">{{cardetail.brandName}}</li>
+      <li class="card-title" >Renk: {{cardetail.colorName}}</li>
+      <li class="card-title">Model: {{cardetail.modelYear}}</li>
+      <li class="card-title">Günlük Fiyat: {{cardetail.dailyPrice}} ₺</li>
+    </ul>
+    
     <p class="card-text">Açıklama: {{cardetail.description}}</p>
-    <a (click)="addToRent(cardetail)" routerLink="/rentaldetails" 
+    <a (click)="getCheckRentAvailable(carId,rentDate,deliveryDate)" 
+    routerLink="/rentaldetails/car/{{cardetail.carId}}/rentDate/{{rentDate|date:'yyyy-MM-dd'}}/deliveryDate/{{deliveryDate|date:'yyyy-MM-dd'}}"
     class="btn btn-primary">Kirala</a>
   </div>
 </div>

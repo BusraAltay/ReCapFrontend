@@ -25,4 +25,8 @@ export class RentaldetailsComponent implements OnInit {
     })
   }
 
+  addRental(rentaldetails:RentalDetails){
+    
+  }
+
 }
