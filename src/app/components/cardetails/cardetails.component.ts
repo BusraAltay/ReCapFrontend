@@ -18,7 +18,7 @@ export class CardetailsComponent implements OnInit {
   car:Car[] = [];
   apiUrl = "http://localhost:46465"
   defaultImagePath = "/Images/default.jpg"
-  currentCar: Car;
+  // currentCar: Car;
   dataLoaded = false;
   DateTimeNow: Date = new Date();
   rentDate: Date = this.DateTimeNow;
@@ -53,9 +53,9 @@ export class CardetailsComponent implements OnInit {
     return this.carImageService.apiUrl + imagePath
   }
 
-  setCurrentCar(car:Car){
-    this.currentCar = car;
-  }
+  // setCurrentCar(car:Car){
+  //   this.currentCar = car;
+  // }
 
   getCheckRentAvailable(carId:number, rentDate:Date, deliveryDate:Date){
     

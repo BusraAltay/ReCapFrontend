@@ -1,0 +1,49 @@
+<div class="content mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Araba Güncelle</h5></div>
+            <div class="card-body" *ngFor="let cardetail of cardetails">
+                <form [formGroup]="carUpdateForm">
+                    <div class="form-group mb-3">
+                        <input type="number" id="carId" formControlName="id" 
+                        class="form-control" placeholder="{{cardetail.carId}}"/>
+                    </div>
+                </form>
+                <form [formGroup]="carUpdateForm">
+                    <div class="form-group mb-3">
+                        <input type="number" id="brandId" formControlName="brandId" 
+                        class="form-control" placeholder="{{cardetail.brandId}}"/>
+                    </div>
+                </form>
+                 <form [formGroup]="carUpdateForm">
+                    <div class="form-group mb-3">
+                        <input type="number" id="colorId" formControlName="colorId" 
+                        class="form-control" placeholder="{{cardetail.colorId}}"/>
+                    </div>
+                </form>
+                <form [formGroup]="carUpdateForm">
+                    <div class="form-group mb-3">
+                        <input type="number" id="modelYear" formControlName="modelYear" 
+                        class="form-control" placeholder="{{cardetail.modelYear}}"/>
+                    </div>
+                </form>
+                <form [formGroup]="carUpdateForm">
+                    <div class="form-group mb-3">
+                        <input type="number" id="dailyPrice" formControlName="dailyPrice" 
+                        class="form-control" placeholder="{{cardetail.dailyPrice}}"/>
+                    </div>
+                </form>
+                <form [formGroup]="carUpdateForm">
+                    <div class="form-grou mb-3p">
+                        <input type="string" id="description" formControlName="description" 
+                        class="form-control" placeholder="{{cardetail.description}}"/>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="update()">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+

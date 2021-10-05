@@ -33,11 +33,14 @@ export class CarAddComponent implements OnInit {
     if (this.carAddForm.valid){
       let carModel = Object.assign({},this.carAddForm.value);
       this.carService.add(carModel).subscribe(data=>{
-        console.log(data);
         this.toastrService.success(data.message,"Başarılı")
+        console.log(data)
       },dataError=>{
-        console.log(dataError.error)
-        this.toastrService.error(dataError)
+        if(dataError.error.Errors.length > 0){
+          for (let i = 0; i < dataError.error.Errors.length; i++) {
+            this.toastrService.error(dataError.error.Errors[i].ErrorMessage,"Doğrulama hatası")
+          }
+        }
       })
     }else{
       this.toastrService.error("Form eksik","Dikkat!")

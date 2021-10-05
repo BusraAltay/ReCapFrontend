@@ -17,7 +17,7 @@ export class RentaldetailService {
 
   getRentalDetails():Observable<ListResponseModel<RentalDetails>>{
     let newPath = this.apiUrl + "rentals/getrentaldetails";
-    return this.httpClient.get<ListResponseModel<RentalDetails>>(this.apiUrl);
+    return this.httpClient.get<ListResponseModel<RentalDetails>>(newPath);
   }
 
   // getCheckRentAvailable(carId:number, rentDate:Date, deliveryDate:Date)

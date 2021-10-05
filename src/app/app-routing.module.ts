@@ -5,22 +5,32 @@ import { CardetailsComponent } from './components/cardetails/cardetails.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginGuard } from './guard/login.guard';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 
 const routes: Routes = [
   {path:"", pathMatch:"full", component:CarComponent},
-  // {path:"cardetails", component:CardetailsComponent},
-  // {path:"cardetails/brand/:brandId", component:CardetailsComponent},
   {path:"cars", component:CarComponent},
   {path:"cars/brand/:brandId", component:CarComponent},
   {path:"cars/color/:colorId", component:CarComponent},
   {path:"cars/brand/:brandId/color/:colorId", component:CarComponent},
   {path:"cars/add", component:CarAddComponent},
+  // {path:"cars/add", component:CarAddComponent, canActivate:[LoginGuard]},
+  {path:"cars/list", component:CarListComponent},
+  {path:"cars/update/:carId", component:CarUpdateComponent},
+
   {path:"cardetails", component:CardetailsComponent},
   {path:"cardetails/car/:carId", component:CardetailsComponent},
+
   {path:"rentaldetails", component:RentaldetailsComponent},
   {path:"rentaldetails/car/:carId/rentDate/:rentDate/deliveryDate/:deliveryDate",
   component:CardetailsComponent},
+
   {path:"cart", component:CartComponent},
+
+  {path:"login", component:LoginComponent},
   
 ];
 
