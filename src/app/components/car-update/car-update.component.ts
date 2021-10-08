@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CarService } from './../../services/car.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Car } from 'src/app/models/car';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-update',
@@ -16,15 +16,16 @@ export class CarUpdateComponent implements OnInit {
 
   carUpdateForm:FormGroup;
   cardetails:CarDetails[]=[];
-  currentCar:Car;
-  carId:number;
-  brandId:number;
+  // currentCar:Car;
+  // carId:number;
+  // brandId:number;
 
   constructor(private formBuilder:FormBuilder,
     private carService:CarService,
     private cardetailService:CardetailService,
     private toastrService:ToastrService,
-    private activatedRoute:ActivatedRoute,) { }
+    private activatedRoute:ActivatedRoute,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -54,9 +55,9 @@ export class CarUpdateComponent implements OnInit {
     if (this.carUpdateForm.valid){
       let carModel = Object.assign({},this.carUpdateForm.value);
       this.carService.update(carModel).subscribe(response=>{
-        this.toastrService.success("Araba güncellendi","Başarılı")
+        this.toastrService.success(response.message,"Başarılı")
         console.log(carModel)
-        console.log(response)
+        console.log(response.message)
       }
       ,dataError=>{
         if(dataError.error.Errors.length > 0){
@@ -71,4 +72,7 @@ export class CarUpdateComponent implements OnInit {
     }
   }
 
+  goToCarList(){
+    this.router.navigate(['./cars/list']);
+  }
 }

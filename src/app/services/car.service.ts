@@ -14,20 +14,26 @@ export class CarService {
   apiUrl = "http://localhost:46465/api/"
   constructor(private httpClient:HttpClient) { }
 
-  add(car:Car):Observable<ResponseModel>{
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "cars/add",car);
-  }
-
-  update(car:Car):Observable<ResponseModel>{
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "cars/update", car);
-  }
-
-  // update(car:Car):Observable<SingleResponseModel<Car>>{
-  //   return this.httpClient.post<SingleResponseModel<Car>>(this.apiUrl + "cars/update", car)
-  // }
-
   getAll():Observable<ListResponseModel<Car>>{
     let newPath = this.apiUrl + "cars/getall";
     return this.httpClient.get<ListResponseModel<Car>>(newPath)
+  }
+
+  add(car:Car):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "cars/add",car);
+  }
+  
+   update(car:Car):Observable<ResponseModel>{
+     return this.httpClient.post<ResponseModel>(this.apiUrl + "cars/update", car)
+   }
+
+   delete(car:Car):Observable<ResponseModel>{
+     return this.httpClient.post<ResponseModel>(this.apiUrl + "cars/delete", car)
+   }
+  
+  getCurrentCar(carId:number):Observable<ListResponseModel<Car>>{
+    let newPath = this.apiUrl + "cars/getbycarid?id=" + carId
+    console.log(newPath);
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 }
