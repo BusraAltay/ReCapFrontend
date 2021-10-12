@@ -1,0 +1,68 @@
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="registerForm">
+      <h1 class="h3 mb-3 fw-normal">Üye ol</h1>
+
+      <div class="form-floating mb-2">
+        <input
+          formControlName="firstName"
+          type="text"
+          class="form-control"
+          id="firstName"
+          placeholder="İsim"
+        />
+        <label for="firstName">İsim</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input
+          formControlName="lastName"
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="Soyisim"
+        />
+        <label for="lastName">Soyisim</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input
+        formControlName="email"
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="name@example.com"
+        />
+        <label for="email">E-posta</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Şifre"
+        />
+        <label for="password">Parola</label>
+      </div>
+      <!-- <div class="form-floating mb-2">
+        <input
+          formControlName="rePassword"
+          type="password"
+          class="form-control"
+          id="rePassword"
+          placeholder="Parola Tekrarı"
+        />
+        <label for="rePassword">Parola Tekrarı</label>
+      </div> -->
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" /> Beni Hatırla
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" (click)="register()">
+        Üye ol
+      </button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    </form>
+  </main>
+</body>

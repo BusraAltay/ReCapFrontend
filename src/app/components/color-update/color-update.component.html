@@ -4,15 +4,17 @@
             <div class="card-header"><h5 class="title">Renk Güncelle</h5></div>
             <div class="card-body" *ngFor="let color of colors">
                 <form [formGroup]="colorUpdateForm">
-                    <div class="form-group mb-3">
+                    <div class="form-group form-floating mb-3">
                         <input type="number" id="id" formControlName="id" 
                         class="form-control" placeholder="{{color.id}}"/>
+                        <label for="id">Id: {{color.id}}</label>
                     </div>
                 </form>
                 <form [formGroup]="colorUpdateForm">
-                    <div class="form-group mb-3">
+                    <div class="form-group form-floating mb-3">
                         <input type="text" id="name" formControlName="name" 
                         class="form-control" placeholder="{{color.name}}"/>
+                        <label for="name">Renk: {{color.name}}</label>
                     </div>
                 </form>
             </div>

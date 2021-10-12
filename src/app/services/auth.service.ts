@@ -1,8 +1,11 @@
+import { Observable } from 'rxjs';
+import { ResponseModel } from './../models/responseModel';
+import { SingleResponseModel } from './../models/singleResponseModel';
+import { RegisterModel } from './../models/register';
 import { TokenModel } from './../models/tokenModel';
 import { LoginModel } from './../models/loginModel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,13 @@ export class AuthService {
   constructor(private httpClient:HttpClient) { }
 
   login(loginModel:LoginModel) {
-    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"login",loginModel)
+    let newPath = this.apiUrl + "login";
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath,loginModel)
+  }
+
+  register(registerModel:RegisterModel):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "register";
+    return this.httpClient.post<ResponseModel>(newPath, registerModel);
   }
 
   isAuthenticated(){
@@ -24,4 +33,5 @@ export class AuthService {
       return false;
     }
   }
+
 }

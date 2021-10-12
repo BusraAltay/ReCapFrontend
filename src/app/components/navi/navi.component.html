@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,10 +46,25 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+
+        <li *ngIf="checkToLogin()==false" class="nav-item" style="margin-right: 2ex;">
+          <button class="btn btn-outline-success" routerLink="/register">Üyelik</button>
+        </li>
+        <li class="nav-item">
+          <button *ngIf="checkToLogin()==false" class="btn btn-outline-success" routerLink="/login">Giriş</button>
+        </li>
+        
+        <li *ngIf="checkToEmail()==true" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mt-1" id="navbarDropdownn" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: large;">
+            {{this.user.firstName}} {{this.user.lastName}}
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownn">
+              <li><a class="dropdown-item" routerLink="/userUpdate">Profil düzenle</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a (click)="logOut()" style="cursor: pointer;" 
+                class="dropdown-item">Çıkış yap</a></li>
+        </ul>
       </div>
     </div>
   </nav>

@@ -1,3 +1,5 @@
+import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { RegisterComponent } from './components/register/register.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { RentaldetailsComponent } from './components/rentaldetails/rentaldetails.component';
@@ -45,6 +47,9 @@ const routes: Routes = [
   {path:"cart", component:CartComponent},
 
   {path:"login", component:LoginComponent},
+  {path:"register", component:RegisterComponent},
+
+  {path:"userUpdate", component:UserUpdateComponent}
   
 ];
 
