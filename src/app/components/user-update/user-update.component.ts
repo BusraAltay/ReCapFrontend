@@ -14,7 +14,7 @@ export class UserUpdateComponent implements OnInit {
   userForm: FormGroup;
   email:string;
   user:User = new User();
-  status:string;
+  password:FormControl;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,14 +41,9 @@ export class UserUpdateComponent implements OnInit {
 
   getUserByEmail() {
     if (this.email) {
-      this.userService.getUserByEmail(this.email).subscribe(
-        (response) => {
+      this.userService.getUserByEmail(this.email).subscribe(response => {
           this.user = response;
-          if (response.status) {
-            this.status = 'Aktif';
-          } else {
-            this.status = 'Aktif değil';
-          }
+          console.log(this.user)
         },
         (responseError) => {
           this.toastrService.error(responseError.error);
@@ -57,21 +52,32 @@ export class UserUpdateComponent implements OnInit {
     }
   }
 
-  update() {
-    if (this.userForm.valid) {
-      let profileModel = Object.assign({}, this.userForm.value);
-      console.log(profileModel)
-      this.userService.profileUpdate(profileModel).subscribe(
-        (response) => {
-          this.toastrService.success(response.message);
-          console.log(response)
-        },
-        (responseError) => {
-          this.toastrService.error(responseError.error);
-        }
-      );
-    } else {
-      this.toastrService.error('Formu Boş Bıraktınız');
+  // update() {
+  //   if (this.userForm.valid) {
+  //     let userModel = Object.assign({}, this.userForm.value);
+  //     console.log(userModel)
+  //     this.userService.profileUpdate(userModel).subscribe(response => {
+  //         this.toastrService.success(response.message);
+  //       },
+  //       responseError => {
+  //         this.toastrService.error(responseError.error);
+  //       }
+  //     );
+  //   } else {
+  //     this.toastrService.error('Formu Boş Bıraktınız');
+  //   }
+  // }
+
+  updateProfile(){
+    if(this.userForm.valid){
+      let profileModel = Object.assign({},this.userForm.value)
+      this.userService.profileUpdate(profileModel).subscribe(response=>{
+        this.toastrService.success(response.message);
+      },responseError=>{
+       this.toastrService.error(responseError.error);
+      });
+    }else{
+      this.toastrService.error("Formu Boş Bıraktınız")
     }
   }
 }

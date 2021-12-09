@@ -16,6 +16,7 @@ export class CarUpdateComponent implements OnInit {
 
   carUpdateForm:FormGroup;
   cardetails:CarDetails[]=[];
+  // cars:Car[] = [];
   // currentCar:Car;
   // carId:number;
   // brandId:number;
@@ -75,4 +76,11 @@ export class CarUpdateComponent implements OnInit {
   goToCarList(){
     this.router.navigate(['./cars/list']);
   }
+
+  // getCars() {
+  //   this.carService.getAll().subscribe((response) => {
+  //     this.cars = response.data;
+  //     this.dataLoaded = true;
+  //   });
+  // }
 }

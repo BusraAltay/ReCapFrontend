@@ -11,7 +11,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
 export class CardetailService {
 
   apiUrl = "http://localhost:46465/api/"
-
+  
   constructor(private httpClient:HttpClient) { }
 
   getCarDetails():Observable<ListResponseModel<CarDetails>>{
@@ -44,12 +44,12 @@ export class CardetailService {
     return this.httpClient.get<ListResponseModel<CarDetails>>(newPath);
   }
 
-  getCheckRentAvailable(carId:number, rentDate:Date, deliveryDate:Date)
-    :Observable<SingleResponseModel<boolean>>{
-    let newPath = this.apiUrl + "rentals/checkrental?carId=" + carId 
-    + "&rentDate=" + rentDate 
-    + "&deliveryDate=" + deliveryDate;
-    console.log(newPath);
-    return this.httpClient.get<SingleResponseModel<boolean>>(newPath);
-  }
+  // getCheckRentAvailable(carId:number, rentDate:Date, deliveryDate:Date)
+  //   :Observable<SingleResponseModel<boolean>>{
+  //   let newPath = this.apiUrl + "rentals/checkrental?carId=" + carId 
+  //   + "&rentDate=" + rentDate 
+  //   + "&deliveryDate=" + deliveryDate;
+  //   console.log(newPath);
+  //   return this.httpClient.get<SingleResponseModel<boolean>>(newPath);
+  // }
 }

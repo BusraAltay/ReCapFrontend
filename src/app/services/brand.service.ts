@@ -1,4 +1,5 @@
-import { Brand } from './../models/brand';
+import { Brand } from 'src/app/models/brand';
+import { SingleResponseModel } from './../models/singleResponseModel';
 import { ListResponseModel } from './../models/listResponseModel';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
@@ -17,6 +18,12 @@ export class BrandService {
   getBrands():Observable<ListResponseModel<Brand>>{
     let newPath = this.apiUrl + "getall"
     return this.httpClient.get<ListResponseModel<Brand>>(newPath);
+  }
+
+  getBranById(id:number):Observable<SingleResponseModel<Brand>>{
+    let newPath = this.apiUrl + "getbybrandid?id=" + id
+    console.log(newPath);
+    return this.httpClient.get<SingleResponseModel<Brand>>(newPath);
   }
 
   getCurrentBrand(id:number):Observable<ListResponseModel<Brand>>{

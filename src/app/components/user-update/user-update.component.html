@@ -86,17 +86,27 @@
   </div>
 </div> -->
 
+
+
 <body class="text-center">
     <main class="form-signin">
       <form [formGroup]="userForm">
-        <h1 class="h3 mb-3 fw-normal">Üye ol</h1>
+        <h1 class="h3 mb-3 fw-normal">Profili Güncelle</h1>
         <div class="form-floating mb-2">
           <input
+              type="hidden"
+              id="id"
+              formControlName="id"
+              [ngModel]="user.id"
+              class="form-control"
+            />
+          <input 
             formControlName="firstName"
             type="text"
             class="form-control"
             id="firstName"
-            placeholder="{{this.user.firstName}}"
+            placeholder="firstName"
+            [ngModel]="user.firstName"
           />
           <label for="firstName">İsim</label>
         </div>
@@ -107,6 +117,7 @@
             class="form-control"
             id="lastName"
             placeholder="Soyisim"
+            [ngModel]="user.lastName"
           />
           <label for="lastName">Soyisim</label>
         </div>
@@ -117,6 +128,7 @@
           class="form-control"
           id="email"
           placeholder="name@example.com"
+          [ngModel]="user.email"
           />
           <label for="email">E-posta</label>
         </div>
@@ -127,10 +139,11 @@
             class="form-control"
             id="password"
             placeholder="Şifre"
+            [ngModel]="user.password"
           />
           <label for="password">Parola</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" (click)="update()">
+        <button class="w-100 btn btn-lg btn-primary" (click)="updateProfile()">
           Güncelle
         </button>
       </form>

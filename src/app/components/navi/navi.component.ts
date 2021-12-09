@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 })
 export class NaviComponent implements OnInit {
   user: User = new User();
-  // userName = this.localStorageService.get("name");
   email = this.localStorageService.get("email");
 
   constructor(
@@ -54,9 +53,8 @@ export class NaviComponent implements OnInit {
 
   getUserByEmail() {
     if (this.email) {
-      this.userService.getUserByEmail(this.email).subscribe((response) => {
+      this.userService.getUserByEmail(this.email).subscribe(response => {
         this.user = response;
-        // console.log(this.user.firstName);
       });
     }
   }

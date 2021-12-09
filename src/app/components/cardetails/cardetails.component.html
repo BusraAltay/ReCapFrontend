@@ -4,13 +4,16 @@
       <label for="rent-date-input" class="from-label">Alış Tarihi</label>
       <input [ngModel]="rentDate | date: 'yyyy-MM-dd'" 
           (ngModelChange)="rentDate = $event"
-          name="rentDate" class="form-control" 
+          (change)="onChangeEvent($event); checkReturnDate()"
+          min="{{minDate}}"
+          name="rentDate" class="form-control"
           type="date" id="rent-date-input" required />
   </div>
   <div class="col-md-4 form-group">
       <label for="delivery-date-input" class="from-label">Teslim Tarihi</label>
       <input [ngModel]="deliveryDate | date: 'yyyy-MM-dd'" 
           (ngModelChange)="deliveryDate = $event"
+          max="{{maxDate}}"
           name="deliveryDate" class="form-control" 
           type="date" id="delivery-date-input" required />
   </div>
@@ -28,52 +31,69 @@
   <div class="card-body">
     <ul>
       <li type="text" class="card-title" value="{{cardetail.carId}}">{{cardetail.brandName}}</li>
-      <li class="card-title" >Renk: {{cardetail.colorName}}</li>
+      <li class="card-title">Renk: {{cardetail.colorName}}</li>
       <li class="card-title">Model: {{cardetail.modelYear}}</li>
       <li class="card-title">Günlük Fiyat: {{cardetail.dailyPrice}} ₺</li>
     </ul>
     
     <p class="card-text">Açıklama: {{cardetail.description}}</p>
-    <a (click)="getCheckRentAvailable(carId,rentDate,deliveryDate)" 
-    routerLink="/rentaldetails/car/{{cardetail.carId}}/rentDate/{{rentDate|date:'yyyy-MM-dd'}}/deliveryDate/{{deliveryDate|date:'yyyy-MM-dd'}}"
+    <div>
+      <a (click)="CheckRentAvailable(carId,rentDate,deliveryDate)" 
     class="btn btn-primary">Kirala</a>
+    </div>
+    
+    <!-- <a  (click)="rentCar()" type="submit"  
+      class="btn btn-primary">Kirala</a> -->
+    </div>
   </div>
 </div>
+<!-- routerLink="/rentaldetails/car/{{cardetail.carId}}/rentDate/{{rentDate|date:'yyyy-MM-dd'}}/deliveryDate/{{deliveryDate|date:'yyyy-MM-dd'}}" -->
+<div>
+  <br>
+  <!-- <app-rental></app-rental> -->
+</div>
 
+<!-- 
+<form [formGroup]="rentalAddForm">
+  <div class="form-group row mb-2" style="display: none">
+    <label for="userId" class="col-4 col-form-label">Kiralayan</label>
 
-  <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img *ngIf="cardetail.carImages.length==0" 
-          [src]="getImagePath(defaultImagePath)" class="d-block w-100" alt="..."
-          style="margin-top: 1ex; height: 20ex;">
-        <img *ngIf="cardetail.carImages.length==1"
-          [src]="getImagePath(cardetail.carImages[0].imagePath)" class="d-block w-100" 
-          alt="..." style="margin-top: 1ex; height: 20ex;">
+          <div class="col-8">I
+              <input id="userId" formControlName="userId" type="number" class="form-control" 
+              [value]="userId" [ngModel]="userId" />
+          </div>
       </div>
-      <div class="carousel-item">
-        <img *ngIf="cardetail.carImages.length<5" 
-          [src]="getImagePath(defaultImagePath)" class="d-block w-100" alt="..."
-          style="margin-top: 1ex; height: 20ex;">
-        <img *ngIf="cardetail.carImages.length==2"
-          [src]="getImagePath(cardetail.carImages[1].imagePath)" class="d-block w-100" 
-          alt="..." style="margin-top: 1ex; height: 20ex;">
+
+      <div class="form-group row mb-2" style="display: none">
+          <label for="carId" class="col-4 col-form-label">Araba</label>
+          <div class="col-8">
+              <input *ngIf="car" id="carId" formControlName="carId" type="number" 
+              class="form-control" [value]="carId" [ngModel]="carId" />
+          </div>
       </div>
-      <div class="carousel-item">
-        <img *ngIf="cardetail.carImages.length<5" 
-          [src]="getImagePath(defaultImagePath)" class="d-block w-100" alt="..."
-          style="margin-top: 1ex; height: 20ex;">
-        <img *ngIf="cardetail.carImages.length==3"
-          [src]="getImagePath(cardetail.carImages[2].imagePath)" class="d-block w-100" 
-          alt="..." style="margin-top: 1ex; height: 20ex;">
-      </div>
+
+      <div class="form-group row mb-2">
+          <label for="rentDate" class="col-4 col-form-label">Başlangıç</label
+    >
+    <div class="col-8">
+      <input
+        (change)="onChangeEvent($event)"
+        min="{{ getRentMinDate() }}"
+        [(ngModel)]="rentDate"
+        type="date"
+        class="form-control"
+        id="rentDate"
+        formControlName="rentDate"
+        placeholder="Bir gün seçiniz."
+      />
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div> -->
+  </div>
+
+  <div class="form-group row">
+    <label for="returnDate" class="col-4 col-form-label">Bitiş</label>
+        <div class="col-8">
+            <input min="" max="" [(ngModel)]="deliveryDate" type="date" class="form-control" 
+            id="deliveryDate" formControlName="deliveryDate" placeholder="Bir gün seçiniz." />
+        </div>
+  </div>
+</form> -->

@@ -14,11 +14,11 @@ export class UserService {
 
   constructor(private httpClient:HttpClient) { }
 
-  // getCurrentUser(id:number):Observable<ListResponseModel<User>>{
-  //   let newPath = this.apiUrl + "getbyuserid?id=" + id
-  //   console.log(newPath);
-  //   return this.httpClient.get<ListResponseModel<User>>(newPath);
-  // }
+  getByUserId(id:number):Observable<ListResponseModel<User>>{
+    let newPath = this.apiUrl + "getbyuserid?id=" + id
+    console.log(newPath);
+    return this.httpClient.get<ListResponseModel<User>>(newPath);
+  }
 
   getUserByEmail(email:string):Observable<User>{
     let newPath = this.apiUrl + "getbyuseremail?email=" + email
@@ -31,8 +31,8 @@ export class UserService {
   }
 
   profileUpdate(user:User):Observable<ResponseModel>{
-    console.log(user)
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "update", {
+    console.log(user);
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "updateprofile", {
       user:{
         'id': user.id,
         'firstName': user.firstName,

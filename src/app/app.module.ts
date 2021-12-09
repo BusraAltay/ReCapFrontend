@@ -33,6 +33,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { RentalComponent } from './components/rental/rental.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
     ColorAddComponent,
     ColorUpdateComponent,
     RegisterComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    RentalComponent
   ],
   imports: [
     BrowserModule,

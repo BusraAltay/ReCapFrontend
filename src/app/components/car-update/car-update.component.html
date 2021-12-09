@@ -4,39 +4,50 @@
             <div class="card-header"><h5 class="title">Araba Güncelle</h5></div>
             <div class="card-body" *ngFor="let cardetail of cardetails">
                 <form [formGroup]="carUpdateForm">
-                    <div class="form-group mb-3">
-                        <input type="number" id="id" formControlName="id" 
-                        class="form-control" placeholder="{{cardetail.carId}}"/>
+                    <div class="form-group form-floating mb-3">
+                        <input type="hidden" id="id" formControlName="id" 
+                        class="form-control" placeholder="{{cardetail.carId}}"
+                        [(ngModel)]="cardetail.carId"/>
                     </div>
                 </form>
                 <form [formGroup]="carUpdateForm">
-                    <div class="form-group mb-3">
+                    <div class="form-group form-floating mb-3">
                         <input type="number" id="brandId" formControlName="brandId" 
-                        class="form-control" placeholder="{{cardetail.brandId}}"/>
+                        class="form-control" placeholder="{{cardetail.brandId}}"
+                        [(ngModel)]="cardetail.brandId"/>
+                        <label for="brandId">Marka Id</label>
                     </div>
                 </form>
                  <form [formGroup]="carUpdateForm">
-                    <div class="form-group mb-3">
+                    <div class="form-group form-floating mb-3">
                         <input type="number" id="colorId" formControlName="colorId" 
-                        class="form-control" placeholder="{{cardetail.colorId}}"/>
+                        class="form-control" placeholder="{{cardetail.colorId}}"
+                        [(ngModel)]="cardetail.colorId"/>
+                        <label for="brandId">Rnk Id</label>
                     </div>
                 </form>
                 <form [formGroup]="carUpdateForm">
-                    <div class="form-group mb-3">
+                    <div class="form-group form-floating mb-3">
                         <input type="number" id="modelYear" formControlName="modelYear" 
-                        class="form-control" placeholder="{{cardetail.modelYear}}"/>
+                        class="form-control" placeholder="{{cardetail.modelYear}}"
+                        [(ngModel)]="cardetail.modelYear"/>
+                        <label for="brandId">Model Yılı</label>
                     </div>
                 </form>
                 <form [formGroup]="carUpdateForm">
-                    <div class="form-group mb-3">
+                    <div class="form-group form-floating mb-3">
                         <input type="number" id="dailyPrice" formControlName="dailyPrice" 
-                        class="form-control" placeholder="{{cardetail.dailyPrice}}"/>
+                        class="form-control" placeholder="{{cardetail.dailyPrice}}"
+                        [(ngModel)]="cardetail.dailyPrice"/>
+                        <label for="brandId">Günlük Fiyat</label>
                     </div>
                 </form>
                 <form [formGroup]="carUpdateForm">
-                    <div class="form-grou mb-3p">
+                    <div class="form-grou form-floating mb-3">
                         <input type="string" id="description" formControlName="description" 
-                        class="form-control" placeholder="{{cardetail.description}}"/>
+                        class="form-control" placeholder="{{cardetail.description}}"
+                        [(ngModel)]="cardetail.description"/>
+                        <label for="brandId">Açıklama</label>
                     </div>
                 </form>
             </div>

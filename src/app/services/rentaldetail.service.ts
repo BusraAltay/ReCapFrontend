@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { Rental } from '../models/rental';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,18 @@ export class RentaldetailService {
   //   return this.httpClient.get<SingleResponseModel<boolean>>(newPath);
   // }
 
-  rentCar(rental:Rental):Observable<SingleResponseModel<number>>{
+  rentCar(rental:Rental):Observable<ResponseModel>{
     let newPath = this.apiUrl + "rentals/addrental";
     console.log(newPath);
-    return this.httpClient.post<SingleResponseModel<number>>(newPath,rental);
+    return this.httpClient.post<ResponseModel>(newPath,rental);
+  }
+
+  getCheckRentAvailable(carId:number, rentDate:string, deliveryDate:string)
+    :Observable<SingleResponseModel<boolean>>{
+    let newPath = this.apiUrl + "rentals/checkrental?carId=" + carId 
+    + "&rentDate=" + rentDate 
+    + "&deliveryDate=" + deliveryDate;
+    console.log(newPath);
+    return this.httpClient.get<SingleResponseModel<boolean>>(newPath);
   }
 }

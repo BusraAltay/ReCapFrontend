@@ -15,7 +15,7 @@ export class LocalStorageService {
     return this.localStorage.getItem(key);
   }
 
-  set(key: string, value: string){
+  set(key: string, value: any){
     this.localStorage.setItem(key,value);
   }
 
@@ -26,4 +26,5 @@ export class LocalStorageService {
   clean(){
     this.localStorage.clear();
   }
+
 }
