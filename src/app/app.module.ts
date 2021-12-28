@@ -19,7 +19,6 @@ import { FilterPipe } from './pipes/filter.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
 import { FiltercarComponent } from './components/filtercar/filtercar.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
@@ -33,7 +32,6 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
-import { RentalComponent } from './components/rental/rental.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +45,6 @@ import { RentalComponent } from './components/rental/rental.component';
     RentaldetailsComponent,
     FilterPipe,
     FiltercarComponent,
-    HomepageComponent,
     CartComponent,
     CarAddComponent,
     BrandAddComponent,
@@ -61,7 +58,6 @@ import { RentalComponent } from './components/rental/rental.component';
     ColorUpdateComponent,
     RegisterComponent,
     UserUpdateComponent,
-    RentalComponent
   ],
   imports: [
     BrowserModule,

@@ -55,6 +55,7 @@ export class NaviComponent implements OnInit {
     if (this.email) {
       this.userService.getUserByEmail(this.email).subscribe(response => {
         this.user = response;
+        console.log("userId: "+this.user.id)
       });
     }
   }

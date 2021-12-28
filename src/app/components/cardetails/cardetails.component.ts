@@ -92,13 +92,14 @@ export class CardetailsComponent implements OnInit {
        deliveryDate: this.deliveryDate
        };
     this.rentalDetailService.rentCar(this.rental).subscribe(data=>{
-      this.toastrService.success(data.message,"Başarılı")
+      //this.toastrService.success(data.message,"Başarılı")
       console.log("carId: " + this.carId)
     })
   }
 
   CheckRentAvailable(carId:number, rentDate:string, deliveryDate:string){
-    this.rentalDetailService.getCheckRentAvailable(carId, rentDate, deliveryDate).subscribe(response=>{
+    this.rentalDetailService.getCheckRentAvailable(carId, rentDate, deliveryDate)
+    .subscribe(response=>{
       this.checkRentAvailable = response.success;
       if (response.success) {
         this.toastrService.success(response.message)

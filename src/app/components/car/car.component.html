@@ -23,9 +23,11 @@
 </div>
 <app-filtercar></app-filtercar>
 
-<div class="row mt-3">
+<div class="row
+
+">
     <div *ngFor="let cardetail of cardetails | filter:filterText" class="card" 
-        style="width: 16rem; margin-right: 2ex; margin-bottom: 2ex;">
+        style="width: 16rem; margin-right: 3ex; margin-bottom: 2ex;">
         <img *ngIf="cardetail.carImages.length==0" 
         [src]="getImagePath(defaultImagePath)" class="card-img-top" alt="..."
         style="margin-top: 1ex; height: 20ex;">

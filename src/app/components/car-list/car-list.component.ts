@@ -39,20 +39,18 @@ export class CarListComponent implements OnInit {
   // }
 
   getCars() {
-    this.carService.getAll().subscribe((response) => {
+    this.carService.getAll().subscribe(response => {
       this.cars = response.data;
       this.dataLoaded = true;
     });
   }
 
   delete(car: Car) {
-    this.carService.delete(car).subscribe(
-      (response) => {
+    this.carService.delete(car).subscribe(response => {
         this.toastrService.success(response.message, 'Başarılı');
-        console.log(response.message);
+        // console.log(response.message);
         console.log(car);
-      },
-      (dataError) => {
+      },dataError => {
         if (dataError.error.Errors.length > 0) {
           for (let i = 0; i < dataError.error.Errors.length; i++) {
             this.toastrService.error(
@@ -64,16 +62,4 @@ export class CarListComponent implements OnInit {
       }
     );
   }
-  // getCurrentCar(carId:number){
-  //   this.cardetailService.getCurrentCarDetails(carId).subscribe(response=>{
-  //     this.cardetails = response.data;
-  //     console.log(response)
-  //   })
-  // }
-  // getCar(carId:number){
-  //   this.carService.getCurrentCar(carId).subscribe(response=>{
-  //     this.cars = response.data;
-  //     this.dataLoaded = true;
-  //   })
-  // }
 }

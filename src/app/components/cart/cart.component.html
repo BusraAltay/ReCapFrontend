@@ -1,10 +1,10 @@
-<h5 style="margin-top: 2ex;">Teslimat Bilgileri</h5>
+<h5 style="margin-top: 2ex;">Kart Bilgileri</h5>
 <hr />
 <div class="row">
     <div class="col-md-8">
         <!-- routerLink="" -->
         <form >
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-6 mb-3">
                     <label >İsim</label>
                     <input  value="" class="form-control" />
@@ -32,9 +32,8 @@
                     <input  value="" class="form-control" />
                 </div>
             </div>
-            <hr class="mb-4" />
+            <hr class="mb-4" /> -->
             
-            <h5 class="mb-3">Kart Bilgileri</h5>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label >Kart Üzerindeki İsim</label>
@@ -61,13 +60,13 @@
                 </div>
             </div>
             <hr class="mb-4" />
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Öde</button>
+            <a (click)="Payment(userId)" class="btn btn-primary">Öde</a>
         </form>
     </div>
     <div class="col-md-4 mb-4">
 
         <h5 class="mb-3">
-            <span class="text-muted">Sipariş Özeti</span>
+            <span class="text-muted">Ödeme Bilgileri</span>
         </h5>
         <ul class="list-group mb-3">
             <!-- @foreach (var item in Model.CartModel.CartItem)
@@ -90,3 +89,4 @@
 
     </div>
 </div>
+

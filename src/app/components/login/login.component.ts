@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.toastrService.success("Giriş başarılı","Başarılı")
         this.localStorageService.set("token",response.data.token);
         this.localStorageService.set("email",this.loginForm.value.email);
+        // localStorage.setItem("token",response.data.token)
         console.log(response)
       },responseError=>{
         //console.log(responseError)

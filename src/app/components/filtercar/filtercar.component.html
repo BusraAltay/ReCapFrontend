@@ -1,33 +1,27 @@
-<!-- <div class="mb-3">
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
-        placeholder="Arayınız">
-</div>
-<div *ngIf="filterText" class="alert alert-primary">
-    {{filterText}} aradınız
-</div> -->
-
 <div class="row">
-    <div class="col-md-4">
-        <select [(ngModel)]="filterBrandId" class="form-select" aria-label="Model">
-            <option selected hidden>Model</option>
-            <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
-        </select>
+    <div class="row">
+        <div class="col-md-4">Marka</div>
+        <div class="col-md-4">Renk</div>
     </div>
-    <!-- <h5>{{filterBrandId}} seçtiniz</h5> -->
-    <div class="col-md-4">
-        <select [(ngModel)]="filterColorId" class="form-select">
-            <option selected hidden>Renk</option>
-            <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
-        </select>
-    </div>
-    <!-- <h5>{{filterColorId}} seçtiniz</h5> -->
-    <div class="col-md-4">
-        <!-- <button (click)="getCarsByFilter(filterBrandId,filterColorId)" 
-        routerLink="/cars/brand/{{filterBrandId}}/color/{{filterColorId}}" type="button" 
-        class="btn btn-primary" 
-        >Filtrele</button> -->
-        <button [routerLink]=(routingLink()) type="button" 
-        class="btn btn-primary">Filtrele</button>
-        <button type="button" class="btn btn-danger mx-2" routerLink="">Temizle</button>
+    <div class="row">
+        <div class="col-md-4">
+            <select [(ngModel)]="filterBrandId" class="form-select" aria-label="Model">
+                <option selected hidden>Model</option>
+                <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
+            </select>
+        </div>
+        <!-- <h5>{{filterBrandId}} seçtiniz</h5> -->
+        <div class="col-md-4">
+            <select [(ngModel)]="filterColorId" class="form-select">
+                <option selected hidden>Renk</option>
+                <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
+            </select>
+        </div>
+        <!-- <h5>{{filterColorId}} seçtiniz</h5> -->
+        <div class="col-md-4">
+            <button [routerLink]=(routingLink()) type="button"
+            class="btn btn-primary">Filtrele</button>
+            <button type="button" class="btn btn-danger mx-2" routerLink="">Temizle</button>
+        </div>
     </div>
 </div>

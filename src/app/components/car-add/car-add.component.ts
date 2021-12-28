@@ -35,13 +35,15 @@ export class CarAddComponent implements OnInit {
       this.carService.add(carModel).subscribe(data=>{
         this.toastrService.success(data.message,"Başarılı")
         console.log(data)
-      },dataError=>{
-        if(dataError.error.Errors.length > 0){
-          for (let i = 0; i < dataError.error.Errors.length; i++) {
-            this.toastrService.error(dataError.error.Errors[i].ErrorMessage,"Doğrulama hatası")
-          }
-        }
-      })
+      }
+      // ,dataError=>{
+      //   if(dataError.error.Errors.length > 0){
+      //     for (let i = 0; i < dataError.error.Errors.length; i++) {
+      //       this.toastrService.error(dataError.error.Errors[i].ErrorMessage,"Doğrulama hatası")
+      //     }
+      //   }
+      // }
+      )
     }else{
       this.toastrService.error("Form eksik","Dikkat!")
     }
